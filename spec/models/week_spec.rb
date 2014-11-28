@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Week do
-  it 'exists' do
+  it 'has games' do
     week = Week.new
 
-    expect(week).to be_a Week
+    expect(week.games).to be_empty
   end
 end
