@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  username: football_pool
+  encoding: unicode
+  host: localhost
+  pool: 5
+  min_messages: warning
+
+development:
+  <<: *default
+  database: football_pool_dev
+  password:
+
+test:
+  <<: *default
+  database: football_pool_test
+  password:
+
+production:
+  <<: *default
+  database: football_pool_prod
+  password: <%= ENV['FOOTBALL_POOL_DB_PASSWORD'] %>
