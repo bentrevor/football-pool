@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141128234053) do
   end
 
   create_table "picks", force: true do |t|
-    t.integer  "team_id"
+    t.boolean  "home_team"
     t.integer  "game_id"
     t.integer  "user_id"
     t.datetime "created_at"

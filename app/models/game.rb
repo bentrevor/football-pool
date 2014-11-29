@@ -1,4 +1,7 @@
 class Game < ActiveRecord::Base
+  has_many :picks
+  has_many :users, through: :picks
+
   def home_team
     Team.find(home_team_id)
   end

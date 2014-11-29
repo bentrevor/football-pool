@@ -7,7 +7,7 @@ class AddUsersAndPicks < ActiveRecord::Migration
     end
 
     create_table :picks do |t|
-      t.belongs_to :team
+      t.boolean    :home_team
       t.belongs_to :game
       t.belongs_to :user
 
