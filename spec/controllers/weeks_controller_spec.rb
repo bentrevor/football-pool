@@ -11,4 +11,12 @@ describe WeeksController do
     expect(response.status).to be 200
     expect(assigns(:week)).to eq week
   end
+
+  it 'shows all weeks' do
+    3.times { |n| Week.create(year: 2014, week_number: n) }
+
+    get :index
+
+    expect(assigns(:weeks).length).to eq 3
+  end
 end

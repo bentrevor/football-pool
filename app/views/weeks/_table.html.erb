@@ -1,18 +1,18 @@
 
 <table>
   <tr>
-    <th>games</th>
-    <th>asdf</th>
-    <th>jkl;</th>
+    <th></th>
+    <% User.all.each do |user| %>
+      <th><%= user.email %></th>
+    <% end %>
   </tr>
-  <tr>
-    <td>game1</td>
-    <td>pick1</td>
-    <td>pick2</td>
-  </tr>
-  <tr>
-    <td>game2</td>
-    <td>pick3</td>
-    <td>pick4</td>
-  </tr>
+
+  <% @week.games.each do |game| %>
+    <tr>
+      <td class="team_names"><%= "#{game.away_team.name} vs. #{game.home_team.name}" %></td>
+      <% game.picks.each do |pick| %>
+        <td><%= pick.team.name[0].capitalize %></td>
+      <% end %>
+    </tr>
+  <% end %>
 </table>

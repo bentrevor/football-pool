@@ -6,7 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-['Chicago Bears', 'Green Bay Packers'].each do |name|
+Team.destroy_all
+Game.destroy_all
+Week.destroy_all
+User.destroy_all
+
+['Bears', 'Packers'].each do |name|
   Team.create(name: name)
 end
 
@@ -17,3 +22,6 @@ week.games << game
 
 User.create(email: 'asdf@yahoo.com')
 User.create(email: 'qwer@hotmail.com')
+
+Pick.create(user_id: User.first.id, game_id: Game.first.id, home_team: true)
+Pick.create(user_id: User.last.id,  game_id: Game.first.id, home_team: false)
