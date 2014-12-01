@@ -7,7 +7,7 @@
     <% end %>
   </tr>
 
-  <% @week.games.each do |game| %>
+  <% @week.games_in_order.each do |game| %>
     <tr>
       <td class="team_names"><%= "#{game.away_team.name} vs. #{game.home_team.name}" %></td>
       <% game.picks.each do |pick| %>

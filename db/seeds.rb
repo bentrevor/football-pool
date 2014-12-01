@@ -11,17 +11,79 @@ Game.destroy_all
 Week.destroy_all
 User.destroy_all
 
-['Bears', 'Packers'].each do |name|
+team_names = %w[
+Bears
+Packers
+Lions
+Vikings
+
+Falcons
+Panthers
+Saints
+Buccaneers
+
+Cowboys
+Giants
+Eagles
+Redskins
+
+Cardinals
+49ers
+Seahawks
+Rams
+
+Ravens
+Bengals
+Browns
+Steelers
+
+Texans
+Colts
+Jaguars
+Titans
+
+Bills
+Dolphins
+Patriots
+Jets
+
+Broncos
+Chiefs
+Raiders
+Chargers
+]
+
+team_names.each do |name|
   Team.create(name: name)
 end
 
-game = Game.create(home_team_id: Team.first.id, away_team_id: Team.last.id)
+
+
 week = Week.create(year: 2014, week_number: 1)
 
-week.games << game
+# (2014,11,27,11,30,0,"+06:00")
+
+week.games = [
+              Game.create(home_team_id: Team.find_by(name: 'Lions').id,      away_team_id: Team.find_by(name: 'Bears').id,     kickoff_time: Time.new(2014,11,27,11,30,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Cowboys').id,    away_team_id: Team.find_by(name: 'Eagles').id,    kickoff_time: Time.new(2014,11,27,15,30,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: '49ers').id,      away_team_id: Team.find_by(name: 'Seahawks').id,  kickoff_time: Time.new(2014,11,27,19,30,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Bills').id,      away_team_id: Team.find_by(name: 'Browns').id,    kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Ravens').id,     away_team_id: Team.find_by(name: 'Chargers').id,  kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Vikings').id,    away_team_id: Team.find_by(name: 'Panthers').id,  kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Buccaneers').id, away_team_id: Team.find_by(name: 'Bengals').id,   kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Texans').id,     away_team_id: Team.find_by(name: 'Titans').id,    kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Colts').id,      away_team_id: Team.find_by(name: 'Redskins').id,  kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Jaguars').id,    away_team_id: Team.find_by(name: 'Giants').id,    kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Steelers').id,   away_team_id: Team.find_by(name: 'Saints').id,    kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Rams').id,       away_team_id: Team.find_by(name: 'Raiders').id,   kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Falcons').id,    away_team_id: Team.find_by(name: 'Cardinals').id, kickoff_time: Time.new(2014,11,30,15,05,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Packers').id,    away_team_id: Team.find_by(name: 'Patriots').id,  kickoff_time: Time.new(2014,11,30,15,25,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Chiefs').id,     away_team_id: Team.find_by(name: 'Broncos').id,   kickoff_time: Time.new(2014,11,30,19,30,0,"+06:00")),
+              Game.create(home_team_id: Team.find_by(name: 'Jets').id,       away_team_id: Team.find_by(name: 'Dolphins').id,  kickoff_time: Time.new(2014,12,01,19,30,0,"+06:00")),
+             ]
 
 User.create(email: 'asdf@yahoo.com')
 User.create(email: 'qwer@hotmail.com')
 
-Pick.create(user_id: User.first.id, game_id: Game.first.id, home_team: true)
-Pick.create(user_id: User.last.id,  game_id: Game.first.id, home_team: false)
+Pick.create(user_id: User.first.id, game_id: Game.first.id, is_home_team: true)
+Pick.create(user_id: User.last.id,  game_id: Game.first.id, is_home_team: false)
