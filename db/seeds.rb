@@ -59,9 +59,7 @@ end
 
 
 
-week = Week.create(year: 2014, week_number: 1)
-
-# (2014,11,27,11,30,0,"+06:00")
+week = Week.create(year: 2014, week_number: 13)
 
 week.games = [
               Game.create(home_team_id: Team.find_by(name: 'Lions').id,      away_team_id: Team.find_by(name: 'Bears').id,     kickoff_time: Time.new(2014,11,27,11,30,0,"+06:00")),
