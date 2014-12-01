@@ -1,0 +1,18 @@
+
+<table>
+  <tr>
+    <th></th>
+    <% User.all.each do |user| %>
+      <th class="user_names"><%= user.email %></th>
+    <% end %>
+  </tr>
+
+  <% @week.games_in_order.each do |game| %>
+    <tr>
+      <td class="team_names"><%= "#{game.away_team.name} vs. #{game.home_team.name}" %></td>
+      <% game.picks.each do |pick| %>
+        <td class="pick_abbrev"><%= pick.team.name[0].capitalize %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

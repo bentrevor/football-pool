@@ -1,0 +1,10 @@
+
+<h2>2014 Season</h2>
+<h4>Regular Season</h4>
+
+<% @weeks.each do |week| %>
+  <%= link_to "Week #{week.week_number}", week_path(week.id) %>
+<% end %>
+
+<h4>Playoffs</h4>
+<p>TBD</p>

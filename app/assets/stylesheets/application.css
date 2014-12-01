@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+h1 {
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+    margin: auto;
+    padding: 4px;
+}
+
+.pick_abbrev {
+    text-align: center;
+}
+
+.team_names {
+    padding-right: 40px;
+}
+
+body {
+    background: #ccc;
+}
+
+.user_names {
+    font-size: 0.8em;
+    column-width: auto;
+}
+
+.body-container {
+    background: #ddd;
+    border: 3px solid #bbb;
+    border-radius: 20px;
+    margin: auto;
+    width: 80%;
+    padding: 30px;
+}

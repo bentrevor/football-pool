@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128234053) do
+ActiveRecord::Schema.define(version: 20141130190428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(version: 20141128234053) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "week_id"
+    t.datetime "kickoff_time",    null: false
   end
 
   create_table "picks", force: true do |t|
-    t.boolean  "home_team"
+    t.boolean  "is_home_team"
     t.integer  "game_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -48,6 +49,8 @@ ActiveRecord::Schema.define(version: 20141128234053) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "weeks", force: true do |t|
     t.integer "year",        null: false
