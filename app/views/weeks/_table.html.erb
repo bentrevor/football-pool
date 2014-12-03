@@ -3,7 +3,11 @@
   <tr>
     <th></th>
     <% User.all.each do |user| %>
-      <th class="user_names"><%= user.email %></th>
+      <th class="user_names">
+        <%= "***\n" if (current_user_name == user.name) %>
+        <%= user.name %>
+        <%= "\n***" if (current_user_name == user.name) %>
+      </th>
     <% end %>
   </tr>
 
