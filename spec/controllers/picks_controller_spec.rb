@@ -9,6 +9,7 @@ describe PicksController do
   let(:game2)   { Game.create(home_team_id: packers.id, away_team_id: bears.id, kickoff_time: Time.now + 5.days) }
 
   it 'creates a pick' do
+    request.env['HTTP_REFERER'] = 'asdf'
     allow(Week).to receive(:find)
     opts = { "game#{game1.id}" => "home#{game1.id}", 'current_user_name' => name }.symbolize_keys
     session[:current_user_name] = user.name

@@ -5,7 +5,6 @@ class WeeksController < ApplicationController
 
   def show
     week = Week.find(params[:id])
-    session[:week_id] = week.id
     @week = week
   end
 end

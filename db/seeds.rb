@@ -57,10 +57,7 @@ team_names.each do |name|
   Team.create(name: name)
 end
 
-
-
 week = Week.create(year: 2014, week_number: 13)
-
 week.games = [
               Game.create(home_team_id: Team.find_by(name: 'Lions').id,      away_team_id: Team.find_by(name: 'Bears').id,     kickoff_time: Time.new(2014,11,27,11,30,0,"+06:00")),
               Game.create(home_team_id: Team.find_by(name: 'Cowboys').id,    away_team_id: Team.find_by(name: 'Eagles').id,    kickoff_time: Time.new(2014,11,27,15,30,0,"+06:00")),
@@ -80,27 +77,24 @@ week.games = [
               Game.create(home_team_id: Team.find_by(name: 'Jets').id,       away_team_id: Team.find_by(name: 'Dolphins').id,  kickoff_time: Time.new(2014,12,01,19,30,0,"+06:00")),
              ]
 
-don      = User.create(name: 'Don')
-zak_fam  = User.create(name: 'Zak Fam')
-mary_z   = User.create(name: 'Mary Z')
-tommy    = User.create(name: 'Tommy')
-paul     = User.create(name: 'Paul')
-charles  = User.create(name: 'Charles')
-michael  = User.create(name: 'Michael')
-ben_t    = User.create(name: 'Ben T')
-danny    = User.create(name: 'Danny')
-bruce    = User.create(name: 'Bruce')
-barb     = User.create(name: 'Barb')
-alx_lh   = User.create(name: 'Alx/Lh')
-sarah    = User.create(name: 'Sarah')
-ann      = User.create(name: 'Ann')
 a_aj     = User.create(name: 'A & AJ')
-kristina = User.create(name: 'Kristina')
+alx_lh   = User.create(name: 'Alx/Lh')
+ann      = User.create(name: 'Ann')
 anthony  = User.create(name: 'Anthony')
-kim_jon  = User.create(name: 'Kim/Jon')
+barb     = User.create(name: 'Barb')
+ben_t    = User.create(name: 'Ben T')
+bruce    = User.create(name: 'Bruce')
+charles  = User.create(name: 'Charles')
+danny    = User.create(name: 'Danny')
+don      = User.create(name: 'Don')
 jacob    = User.create(name: 'Jacob')
+kim_jon  = User.create(name: 'Kim/Jon')
+kristina = User.create(name: 'Kristina')
+mary_z   = User.create(name: 'Mary Z')
 matt     = User.create(name: 'Matt')
+michael  = User.create(name: 'Michael')
+paul     = User.create(name: 'Paul')
+sarah    = User.create(name: 'Sarah')
+tommy    = User.create(name: 'Tommy')
 vince    = User.create(name: 'Vince')
-
-Pick.create(user_id: User.first.id, game_id: Game.first.id, is_home_team: true)
-Pick.create(user_id: User.last.id,  game_id: Game.first.id, is_home_team: false)
+zak_fam  = User.create(name: 'Zak Fam')

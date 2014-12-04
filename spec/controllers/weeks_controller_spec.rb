@@ -13,12 +13,6 @@ describe WeeksController do
     expect(assigns(:week)).to eq week
   end
 
-  it 'stores an id in the session' do
-    get :show, id: week.id
-
-    expect(session[:week_id]).to eq week.id
-  end
-
   it 'shows all weeks' do
     3.times { |n| Week.create(year: 2014, week_number: n) }
 

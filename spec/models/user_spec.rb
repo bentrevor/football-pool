@@ -10,6 +10,8 @@ describe User do
   describe 'pick abbreviation' do
     let(:bears)   { Team.create(name: 'Bears')   }
     let(:packers) { Team.create(name: 'Packers') }
+    let(:broncos) { Team.create(name: 'Broncos') }
+    let(:browns)  { Team.create(name: 'Browns')  }
     let(:game1)   { Game.create(home_team_id: bears.id, away_team_id: packers.id, kickoff_time: Time.now) }
     let(:game2)   { Game.create(home_team_id: packers.id, away_team_id: bears.id, kickoff_time: Time.now + 5.days) }
 
@@ -18,6 +20,26 @@ describe User do
 
       expect(user.pick_abbreviation_for(game1.id)).to eq 'B'
       expect(user.pick_abbreviation_for(game2.id)).to eq ''
+    end
+
+    it 'uses the first few letters when teams start with the same letter' do
+      bears_at_broncos = Game.create(home_team_id: broncos.id, away_team_id: bears.id, kickoff_time: Time.now)
+      browns_at_broncos = Game.create(home_team_id: broncos.id, away_team_id: browns.id, kickoff_time: Time.now)
+
+      Pick.create(game_id: bears_at_broncos.id,  is_home_team: false, user_id: user.id)
+      Pick.create(game_id: browns_at_broncos.id, is_home_team: false, user_id: user.id)
+
+      expect(user.pick_abbreviation_for(bears_at_broncos.id)).to eq 'Be'
+      expect(user.pick_abbreviation_for(browns_at_broncos.id)).to eq 'Brow'
+    end
+
+    it 'uses 49 for the 49ers' do
+      sf = Team.create(name: '49ers')
+      sf_at_bears = Game.create(home_team_id: bears.id, away_team_id: sf.id, kickoff_time: Time.now)
+
+      Pick.create(game_id: sf_at_bears.id, is_home_team: false, user_id: user.id)
+
+      expect(user.pick_abbreviation_for(sf_at_bears.id)).to eq '49'
     end
   end
 end
