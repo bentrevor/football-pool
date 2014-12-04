@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe WeeksController do
+  let(:game) { Game.create(home_team_id: 1, away_team_id: 2, kickoff_time: Time.now) }
+  let(:week) { Week.create(year: 2014, week_number: 1) }
+
   it 'shows a week' do
-    game = Game.create(home_team_id: 1, away_team_id: 2, kickoff_time: Time.now)
-    week = Week.create(year: 2014, week_number: 1)
     week.games << game
 
     get :show, id: week.id

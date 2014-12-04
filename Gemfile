@@ -7,7 +7,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'thin'
 
-group :test do
+group :test, :development do
   gem 'rspec-rails'
   gem 'pry'
+  gem 'pry-remote'
 end

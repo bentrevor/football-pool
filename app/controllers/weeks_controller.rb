@@ -4,6 +4,7 @@ class WeeksController < ApplicationController
   end
 
   def show
-    @week = Week.find(params[:id])
+    week = Week.find(params[:id])
+    @week = week
   end
 end

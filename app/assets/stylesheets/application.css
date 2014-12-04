@@ -29,7 +29,8 @@ table, th, td {
 }
 
 .team_names {
-    padding-right: 40px;
+    padding-right: 30px;
+    margin: 0px 20px;
 }
 
 body {
@@ -41,6 +42,14 @@ body {
     column-width: auto;
 }
 
+.home_team_name { float: right; width: 33%; }
+.away_team_name { float: left;  width: 33%; }
+
+.vs {
+    float: right;
+    margin: 0px 10px;
+}
+
 .body-container {
     background: #ddd;
     border: 3px solid #bbb;
@@ -48,4 +57,8 @@ body {
     margin: auto;
     width: 80%;
     padding: 30px;
+}
+
+.bordered {
+    border: 3px solid #bbb;
 }

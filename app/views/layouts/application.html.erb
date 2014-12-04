@@ -6,11 +6,24 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
+  <%= flash[:success] %>
+  <%= flash[:error] %>
+  <p>signed in as <%= session[:current_user_name] %></p>
   <body>
     <div class="body-container">
 
       <%= yield %>
 
     </div>
+      <%= @current_user %>
+    <div>
+    </div>
   </body>
+
+  <div>
+    <p>params</p><br />
+    <%= params.map {|k,v| [k,v]} %>
+    <p>session</p><br />
+    <%= session.to_hash.map {|k,v| [k,v]} %>
+  </div>
 </html>
