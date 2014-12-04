@@ -19,8 +19,9 @@
         <span class="home_team_name"><input type="radio" value="home<%= game.id %>" name="game<%= game.id %>"><%= game.home_team.name %></span>
         <span class="vs">vs.</span>
       </td>
-      <% game.picks.each do |pick| %>
-        <td class="pick_abbrev"><%= pick.team.name[0].capitalize %></td>
+
+      <% User.all.each do |user| %>
+        <td class="pick_abbrev"><%= user.pick_abbreviation_for(game.id) %></td>
       <% end %>
     </tr>
   <% end %>

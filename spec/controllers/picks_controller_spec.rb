@@ -1,10 +1,19 @@
 require 'spec_helper'
 
 describe PicksController do
-  it 'creates a pick and still shows the week table' do
-    game = Game.create(home_team_id: Team.create(name: 'home_team_name').id, away_team_id: Team.create(name: 'away_team_name').id, kickoff_time: Time.now)
-    post :create, { is_home_team: true, game_id: game.id, current_user_name: 'asdf' }
+  let(:name)    { 'asdf' }
+  let(:user)    { User.create(name: name)      }
+  let(:bears)   { Team.create(name: 'Bears')   }
+  let(:packers) { Team.create(name: 'Packers') }
+  let(:game1)   { Game.create(home_team_id: bears.id, away_team_id: packers.id, kickoff_time: Time.now) }
+  let(:game2)   { Game.create(home_team_id: packers.id, away_team_id: bears.id, kickoff_time: Time.now + 5.days) }
 
-    expect(Pick.first.team.name).to eq 'home_team_name'
+  it 'creates a pick' do
+    allow(Week).to receive(:find)
+    opts = { "game#{game1.id}" => "home#{game1.id}", 'current_user_name' => name }.symbolize_keys
+    session[:current_user_name] = user.name
+    post :create, opts
+
+    expect(Pick.first.team.name).to eq bears.name
   end
 end

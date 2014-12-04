@@ -4,6 +4,8 @@ class WeeksController < ApplicationController
   end
 
   def show
-    @week = Week.find(params[:id])
+    week = Week.find(params[:id])
+    session[:week_id] = week.id
+    @week = week
   end
 end
