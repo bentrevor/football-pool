@@ -36,10 +36,14 @@ ActiveRecord::Schema.define(version: 20141217050616) do
   end
 
   create_table "stats", force: true do |t|
-    t.integer "current_standing"
-    t.integer "games_won"
-    t.decimal "games_won_percent"
-    t.integer "games_won_last_week"
+    t.integer  "current_standing"
+    t.integer  "games_won"
+    t.decimal  "games_won_percent"
+    t.integer  "games_won_last_week"
+    t.integer  "user_id"
+    t.integer  "week_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "teams", force: true do |t|

@@ -5,6 +5,11 @@ class CreateStats < ActiveRecord::Migration
       t.integer :games_won
       t.decimal :games_won_percent
       t.integer :games_won_last_week
+
+      t.belongs_to :user
+      t.belongs_to :week
+
+      t.timestamps
     end
   end
 end
