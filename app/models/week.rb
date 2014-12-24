@@ -4,4 +4,4 @@ class Week < ActiveRecord::Base
   def games_in_order
     games.order(:kickoff_time).all
   end
- end
+end

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :games, only: [:show]
   resources :weeks, only: [:show, :index]
 
+  get '/', to: 'weeks#index'
+
   post '/pick', to: 'picks#create'
 
   get  '/login',  to: 'sessions#new'
