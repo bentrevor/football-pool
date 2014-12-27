@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Team do
-  let(:team) { Team.create(name: 'Chicago Bears') }
+  let(:team) { Team.create(name: 'Bears') }
 
   describe '#record' do
     it 'shows the wins and losses' do
@@ -18,5 +18,9 @@ describe Team do
 
       expect(team.record).to eq '1 - 2 - 3'
     end
+  end
+
+  it 'finds by name with a pretty syntax' do
+    expect(team).to eq Team['Bears']
   end
 end
