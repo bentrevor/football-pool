@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th></th>
-    <% @week.users_by_ranking.each do |user| %>
+    <% @users.each do |user| %>
       <th class="user_names">
         <%= "***\n" if (session[:current_user_name] == user.name) %>
         <%= user.name %>
@@ -20,7 +20,7 @@
         <span class="vs">vs.</span>
       </td>
 
-      <% User.all.each do |user| %>
+      <% @users.each do |user| %>
         <td class="pick_abbrev"><%= user.pick_abbreviation_for(game.id) %></td>
       <% end %>
     </tr>

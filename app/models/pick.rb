@@ -34,6 +34,20 @@ class Pick < ActiveRecord::Base
     Team.find(game.away_team_id)
   end
 
+  def correct?
+    # TODO this doesn't handle tie games...
+    home_score = game.home_team_score
+    away_score = game.away_team_score
+
+    if home_score && away_score
+      if is_home_team
+        home_score > away_score
+      else
+        away_score > home_score
+      end
+    end
+  end
+
   private
 
   def first_n_letters(game_id)

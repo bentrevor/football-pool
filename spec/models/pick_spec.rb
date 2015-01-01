@@ -20,4 +20,26 @@ describe Pick do
     expect(pick.to_s).to include name
     expect(pick.to_s).to include 'Bears over Packers'
   end
+
+  describe '#correct?' do
+    it "is nil when a game isn't finished yet" do
+      pick = Pick.create(is_home_team: false, game_id: game2.id, user_id: user.id)
+
+      expect(pick.correct?).to be nil
+    end
+
+    it 'knows when it is right' do
+      pick = Pick.create(is_home_team: true, game_id: game2.id, user_id: user.id)
+      game2.finish(21, 0)
+
+      expect(pick.correct?).to be true
+    end
+
+    it 'knows when it is wrong' do
+      pick = Pick.create(is_home_team: true, game_id: game2.id, user_id: user.id)
+      game2.finish(0, 21)
+
+      expect(pick.correct?).to be false
+    end
+  end
 end
