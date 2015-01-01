@@ -58,23 +58,23 @@ team_names.each do |name|
 end
 
 week = Week.create(year: 2014, week_number: 13)
-week.games = [
-              Game.create(home_team_id: Team.find_by(name: 'Lions').id,      away_team_id: Team.find_by(name: 'Bears').id,     kickoff_time: Time.new(2014,11,27,11,30,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Cowboys').id,    away_team_id: Team.find_by(name: 'Eagles').id,    kickoff_time: Time.new(2014,11,27,15,30,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: '49ers').id,      away_team_id: Team.find_by(name: 'Seahawks').id,  kickoff_time: Time.new(2014,11,27,19,30,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Bills').id,      away_team_id: Team.find_by(name: 'Browns').id,    kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Ravens').id,     away_team_id: Team.find_by(name: 'Chargers').id,  kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Vikings').id,    away_team_id: Team.find_by(name: 'Panthers').id,  kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Buccaneers').id, away_team_id: Team.find_by(name: 'Bengals').id,   kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Texans').id,     away_team_id: Team.find_by(name: 'Titans').id,    kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Colts').id,      away_team_id: Team.find_by(name: 'Redskins').id,  kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Jaguars').id,    away_team_id: Team.find_by(name: 'Giants').id,    kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Steelers').id,   away_team_id: Team.find_by(name: 'Saints').id,    kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Rams').id,       away_team_id: Team.find_by(name: 'Raiders').id,   kickoff_time: Time.new(2014,11,30,12,00,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Falcons').id,    away_team_id: Team.find_by(name: 'Cardinals').id, kickoff_time: Time.new(2014,11,30,15,05,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Packers').id,    away_team_id: Team.find_by(name: 'Patriots').id,  kickoff_time: Time.new(2014,11,30,15,25,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Chiefs').id,     away_team_id: Team.find_by(name: 'Broncos').id,   kickoff_time: Time.new(2014,11,30,19,30,0,"+06:00")),
-              Game.create(home_team_id: Team.find_by(name: 'Jets').id,       away_team_id: Team.find_by(name: 'Dolphins').id,  kickoff_time: Time.new(2014,12,01,19,30,0,"+06:00")),
+week13.games = [
+              Game.between('Bears', 'Lions',        Time.new(2014,11,27,11,30,0,"+06:00")),
+              Game.between('Eagles', 'Cowboys',     Time.new(2014,11,27,15,30,0,"+06:00")),
+              Game.between('Seahawks', '49ers',     Time.new(2014,11,27,19,30,0,"+06:00")),
+              Game.between('Browns', 'Bills',       Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.between('Chargers', 'Ravens',    Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.between('Panthers', 'Vikings',   Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.between('Bengals', 'Buccaneers', Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.between('Titans', 'Texans',      Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.between('Redskins', 'Colts',     Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.between('Giants', 'Jaguars',     Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.between('Saints', 'Steelers',    Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.between('Raiders', 'Rams',       Time.new(2014,11,30,12,00,0,"+06:00")),
+              Game.between('Cardinals', 'Falcons',  Time.new(2014,11,30,15,05,0,"+06:00")),
+              Game.between('Patriots', 'Packers',   Time.new(2014,11,30,15,25,0,"+06:00")),
+              Game.between('Broncos', 'Chiefs',     Time.new(2014,11,30,19,30,0,"+06:00")),
+              Game.between('Dolphins', 'Jets',      Time.new(2014,12,01,19,30,0,"+06:00")),
              ]
 
 User.create(name: 'A & AJ')

@@ -17,7 +17,21 @@ describe Week do
     week.games << Game.create(home_team_id: Team.create(name: 'Chiefs').id,     away_team_id: Team.create(name: 'Broncos').id,   kickoff_time: Time.new(2014,11,27,19,30,0,"+06:00"))
     week.games << first_game
 
-    expect(week.games_in_order.first).to eq first_game
-    expect(week.games_in_order.last).to eq last_game
+    expect(week.games_by_kickoff_time.first).to eq first_game
+    expect(week.games_by_kickoff_time.last).to eq last_game
+  end
+
+  it 'orders users by their rank' do
+    first_place = User.create(name: 'first')
+    second_place = User.create(name: 'second')
+    third_place = User.create(name: 'third')
+
+    week = Week.create(year: 2014, week_number: 1)
+
+    Stat.create(week_id: week.id, user_id: first_place.id, current_standing: 1)
+    Stat.create(week_id: week.id, user_id: second_place.id, current_standing: 2)
+    Stat.create(week_id: week.id, user_id: third_place.id, current_standing: 3)
+
+    expect(week.users_by_ranking).to eq [first_place, second_place, third_place]
   end
 end

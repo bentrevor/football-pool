@@ -7,6 +7,20 @@ describe User do
     expect(user.picks).to be_empty
   end
 
+  it 'can be listed by ranking' do
+    first_place = User.create(name: 'first')
+    second_place = User.create(name: 'second')
+    third_place = User.create(name: 'third')
+
+    week = Week.create(year: 2014, week_number: 1)
+
+    Stat.create(week_id: week.id, user_id: first_place.id, current_standing: 1)
+    Stat.create(week_id: week.id, user_id: second_place.id, current_standing: 2)
+    Stat.create(week_id: week.id, user_id: third_place.id, current_standing: 3)
+
+    expect(User.by_ranking_in_week(week.id)).to eq [first_place, second_place, third_place]
+  end
+
   describe 'pick abbreviation' do
     let(:bears)   { Team.create(name: 'Bears')   }
     let(:packers) { Team.create(name: 'Packers') }

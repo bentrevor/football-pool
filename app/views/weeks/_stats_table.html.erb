@@ -1,7 +1,7 @@
 <table>
   <tr>
     <th></th>
-    <% User.all.each do |user| %>
+    <% @week.users_by_ranking.each do |user| %>
       <th class="user_names">
         <%= "***" if (session[:current_user_name] == user.name) %>
         <%= user.name %>
