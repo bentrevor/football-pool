@@ -5,7 +5,7 @@ class Week < ActiveRecord::Base
     games.order(:kickoff_time).all
   end
 
-  def users_by_ranking
-    User.by_ranking_in_week(id)
+  def users_by_standing
+    User.by_standing_in_week(id)
   end
 end

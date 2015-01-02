@@ -21,7 +21,7 @@ describe WeeksController do
     expect(assigns(:weeks).length).to eq 3
   end
 
-  it 'lists user by ranking' do
+  it 'lists user by standing' do
     user = User.create(name: 'asdf')
     stat = Stat.create(week_id: week.id, user_id: user.id)
     week.games << game

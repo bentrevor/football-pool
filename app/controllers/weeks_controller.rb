@@ -6,6 +6,6 @@ class WeeksController < ApplicationController
   def show
     week = Week.find(params[:id])
     @week = week
-    @users = @week.users_by_ranking
+    @users = @week.users_by_standing
   end
 end

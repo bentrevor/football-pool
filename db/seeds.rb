@@ -508,3 +508,7 @@ Pick.create(game_id: cowboys_at_bears.id, user_id: ben_t.id,    is_home_team: tr
 Pick.create(game_id: cowboys_at_bears.id, user_id: a_aj.id,     is_home_team: false)
 Pick.create(game_id: cowboys_at_bears.id, user_id: jacob.id,    is_home_team: true)
 Pick.create(game_id: cowboys_at_bears.id, user_id: ann.id,      is_home_team: true)
+
+Week.all.each do |week|
+  Stat.create_all_for_week(week)
+end

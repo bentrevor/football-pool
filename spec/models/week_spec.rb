@@ -21,7 +21,7 @@ describe Week do
     expect(week.games_by_kickoff_time.last).to eq last_game
   end
 
-  it 'orders users by their rank' do
+  it 'orders users by their standing' do
     first_place = User.create(name: 'first')
     second_place = User.create(name: 'second')
     third_place = User.create(name: 'third')
@@ -32,6 +32,6 @@ describe Week do
     Stat.create(week_id: week.id, user_id: second_place.id, current_standing: 2)
     Stat.create(week_id: week.id, user_id: third_place.id, current_standing: 3)
 
-    expect(week.users_by_ranking).to eq [first_place, second_place, third_place]
+    expect(week.users_by_standing).to eq [first_place, second_place, third_place]
   end
 end
