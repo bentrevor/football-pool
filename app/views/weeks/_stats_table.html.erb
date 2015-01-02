@@ -12,6 +12,7 @@
 
   <% Stat.where(week_id: @week.id).each do |stat| %>
     <tr>
+      <%= stat.current_standing %>
     </tr>
   <% end %>
 </table>

@@ -2,10 +2,11 @@ require 'spec_helper'
 
 describe Stat do
   let!(:user)       { User.create(name: 'name') }
+  let!(:user2)      { User.create(name: 'name2') }
   let!(:week1)      { Week.create(year: 2014, week_number: 1) }
   let!(:game)       { Game.between('Bears', 'Packers') }
   let!(:week2)      { Week.create(year: 2014, week_number: 2) }
-  let(:week2_stat)   { Stat.find_by(week_id: week2.id, user_id: user.id) }
+  let(:week2_stat)  { Stat.find_by(week_id: week2.id, user_id: user.id) }
 
   it 'belongs to a week and user' do
     Stat.create_all_for_week(week2)
@@ -23,6 +24,8 @@ describe Stat do
 
     expect(week2_stat.games_won_last_week).to eq 1
     expect(week2_stat.current_standing).to eq 1
+    user2_stat = Stat.find_by(week_id: week2.id, user_id: user2.id)
+    expect(user2_stat.current_standing).to eq 2
   end
 
   it 'creates zeroed stats for week 1 of a season' do

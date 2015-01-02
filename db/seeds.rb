@@ -509,6 +509,23 @@ Pick.create(game_id: cowboys_at_bears.id, user_id: a_aj.id,     is_home_team: fa
 Pick.create(game_id: cowboys_at_bears.id, user_id: jacob.id,    is_home_team: true)
 Pick.create(game_id: cowboys_at_bears.id, user_id: ann.id,      is_home_team: true)
 
+bears_at_lions.finish(34, 17)
+eagles_at_cowboys.finish(10, 33)
+seahawks_at_49ers.finish(3, 19)
+browns_at_bills.finish(26, 10)
+chargers_at_ravens.finish(33, 34)
+panthers_at_vikings.finish(31, 13)
+bengals_at_bucs.finish(13, 14)
+titans_at_texans.finish(45, 21)
+redskins_at_colts.finish(49, 27)
+giants_at_jaguars.finish(25, 24)
+saints_at_steelers.finish(32, 35)
+raiders_at_rams.finish(52, 0)
+cardinals_at_falcons.finish(29, 18)
+patriots_at_packers.finish(26, 21)
+broncos_at_chiefs.finish(16, 29)
+dolphins_at_jets.finish(13, 16)
+
 Week.all.each do |week|
   Stat.create_all_for_week(week)
 end

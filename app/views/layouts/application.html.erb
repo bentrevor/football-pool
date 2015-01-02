@@ -23,6 +23,8 @@
   <div>
     <p>params</p><br />
     <%= params.map {|k,v| [k,v]} %>
+    <p>week id</p><br />
+    <%= @week.try(:id) %>
     <p>session</p><br />
     <%= session.to_hash.map {|k,v| [k,v]} %>
   </div>

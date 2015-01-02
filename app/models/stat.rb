@@ -36,7 +36,7 @@ class Stat < ActiveRecord::Base
     stats_by_games_won = where(week_id: week.id).order(:games_won_last_week)
 
     stats_by_games_won.each_with_index do |stat, index|
-      stat.update_attributes(current_standing: index + 1)
+      stat.update_attributes(current_standing: User.count - index)
       stat.save!
     end
   end

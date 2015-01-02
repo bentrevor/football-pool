@@ -7,6 +7,7 @@
       <th class="user_names">
         <%= "***\n" if (session[:current_user_name] == user.name) %>
         <%= user.name %>
+        <%= Stat.find_by(user_id: user.id, week_id: @week.id).try(:games_won_last_week) %>
         <%= "\n***" if (session[:current_user_name] == user.name) %>
       </th>
     <% end %>
