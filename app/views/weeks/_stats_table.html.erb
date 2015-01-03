@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th></th>
+    <% @users.each do |user| %>
+      <th class="user_names">
+        <%= "***" if (session[:current_user_name] == user.name) %>
+        <%= user.name %>
+        <%= "***" if (session[:current_user_name] == user.name) %>
+      </th>
+    <% end %>
+  </tr>
+
+  <% Stat.where(week_id: @week.id).each do |stat| %>
+    <tr>
+      <%= stat.current_standing %>
+    </tr>
+  <% end %>
+</table>

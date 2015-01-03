@@ -42,12 +42,13 @@ body {
     column-width: auto;
 }
 
-.home_team_name { float: right; width: 33%; }
-.away_team_name { float: left;  width: 33%; }
+.home_team_name { float: right; width: 20%; }
+.away_team_name { float: left;  width: 20%; }
 
 .vs {
     float: right;
     margin: 0px 10px;
+    width: 20%;
 }
 
 .body-container {

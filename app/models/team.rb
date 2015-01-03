@@ -6,4 +6,8 @@ class Team < ActiveRecord::Base
       "#{wins} - #{losses}"
     end
   end
+
+  def self.[](name)
+    team = find_by_name(name)
+  end
 end

@@ -3,16 +3,17 @@
 <table>
   <tr>
     <th></th>
-    <% User.all.each do |user| %>
+    <% @users.each do |user| %>
       <th class="user_names">
         <%= "***\n" if (session[:current_user_name] == user.name) %>
         <%= user.name %>
+        <%= Stat.find_by(user_id: user.id, week_id: @week.id).try(:games_won_last_week) %>
         <%= "\n***" if (session[:current_user_name] == user.name) %>
       </th>
     <% end %>
   </tr>
 
-  <% @week.games_in_order.each do |game| %>
+  <% @week.games_by_kickoff_time.each do |game| %>
     <tr>
       <td class="team_names">
         <span class="away_team_name"><input type="radio" value="away<%= game.id %>" name="game<%= game.id %>"><%= game.away_team.name %></span>
@@ -20,7 +21,7 @@
         <span class="vs">vs.</span>
       </td>
 
-      <% User.all.each do |user| %>
+      <% @users.each do |user| %>
         <td class="pick_abbrev"><%= user.pick_abbreviation_for(game.id) %></td>
       <% end %>
     </tr>
